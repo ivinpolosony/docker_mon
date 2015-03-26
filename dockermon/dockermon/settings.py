@@ -104,6 +104,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
+# Additional locations of static files
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR,     'static')] #very important no path defined yet 
 STATIC_URL = '/static/'
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')] #very important cos this tells where the templtes are.
