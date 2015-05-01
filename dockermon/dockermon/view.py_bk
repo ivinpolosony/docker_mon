@@ -1,0 +1,171 @@
+from __future__ import unicode_literals
+from django.shortcuts import render_to_response
+from django.template.context import RequestContext
+from twython import Twython
+from django.shortcuts import redirect
+from django.http import HttpResponseRedirect
+import pprint
+from django.core.cache import cache
+from social.apps.django_app.default.models import UserSocialAuth
+import urllib2
+
+from social.backends.oauth import BaseOAuth1, BaseOAuth2
+from social.backends.twitter import TwitterOAuth 
+import requests
+from requests_oauthlib import OAuth1
+from urlparse import parse_qs
+
+REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token"
+AUTHORIZE_URL = "https://api.twitter.com/oauth/authorize?oauth_token="
+ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
+
+CONSUMER_KEY ='NWF2Bfb6NVgf35Sd64mItG9DA'
+CONSUMER_SECRET = 'Nn1ujnXd9rZkM5XzCHJeBysG22JKKaRlaanD253Kb7LJfHSGE2'
+
+
+SOCIAL_AUTH_TWITTER_KEY ='NWF2Bfb6NVgf35Sd64mItG9DA'
+SOCIAL_AUTH_TWITTER_SECRET = 'Nn1ujnXd9rZkM5XzCHJeBysG22JKKaRlaanD253Kb7LJfHSGE2'
+
+def home(request):
+   context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user,
+                        #    'tweets': twython()
+                            })  # adding request object to the object
+   # twitter_user = request.user.social_auth.get(provider='twitter')
+   # print twitter_user
+   # user = request.user
+   
+   # obj = request.REQUEST
+   # print obj
+
+   # pprint.pprint(vars((request.session)))
+   # #obj = get_access_token(request.user)
+   # return context()
+   # strg = <a href="https://graph.facebook.com/{0}/'">https://graph.facebook.com/{0}/'</a> 
+   #        friends?fields=id,name,location,picture' 
+   #        &access_token={1}.format()
+   # 
+   an = "AnonymousUser"
+   if not  str(request.user) == an:
+    social_user = request.user.social_auth.filter(
+    provider='twitter',
+    ).first()
+    print social_user
+    if social_user:
+      print social_user.uid
+      print social_user.extra_data['access_token']
+      extra = social_user.extra_data['access_token']
+     # print "EXTRA AAAAA"+extra["OAUTH_TOKEN"]
+      global OAUTH_TOKEN
+      OAUTH_TOKEN = extra["oauth_token"]
+      global OAUTH_TOKEN_SECRET
+      OAUTH_TOKEN_SECRET = extra["oauth_token_secret"]
+
+      oauth = get_oauth()
+      r = requests.get(url="https://api.twitter.com/1.1/statuses/mentions_timeline.json", auth=oauth)
+      print r.json()
+      # url = 'https://graph.facebook.com/10153758659474126/picture'
+      # request1 = urllib2.Request(url)
+      # pprint.pprint(vars((request1)))
+
+
+   return render_to_response('dockermon/home.html',
+                             context_instance=context)
+''' INTERNAL FUNCTION - not called from a URL '''
+# def getTweets():
+# 	tweets = []
+
+# 	import twitter
+# 	api = twitter.Api(consumer_key=SOCIAL_AUTH_TWITTER_KEY,
+# consumer_secret=SOCIAL_AUTH_TWITTER_SECRET, access_token_key='65716726-3czqZ3oC8N7wBuCh7txY1LLKgUSqoudoHNxAWRy4C'
+# , access_token_secret='AjWiszzVbqI3xFVGIhXOS2lPtfRqDfQOGi9s6s1Rlvm5T')
+# 	latest = api.GetUserTimeline('akshay')
+# 	for tweet in latest:
+# 		status = tweet.text
+# 		tweet_date = tweet.relative_created_at
+# 		tweets.append({'status': status, 'date': tweet_date})
+# # except:
+#         #         tweets.append({'status': 'Follow us @HackedExistence', 'date': 'about 10 minutes ago'})
+#  	return {'tweets': tweets}
+
+
+def twython():
+	twitter = Twython(SOCIAL_AUTH_TWITTER_KEY, SOCIAL_AUTH_TWITTER_SECRET)
+
+	auth = twitter.get_authentication_tokens(callback_url='http://localhost:8000/')
+	OAUTH_TOKEN = auth['oauth_token']
+	OAUTH_TOKEN_SECRET = auth['oauth_token_secret']
+	print '"""""""""""""""""""""""""""""""""""""""""""""""""""""""'
+	#print twitter.search(q='python')
+	print '"""""""""""""""""""""""""""""""""""""""""""""""""""""""'
+	return redirect(auth['auth_url'])
+	print "sad"
+	#print auth
+
+
+
+def get_access_token(user):
+
+    key = str(user.id)
+    access_token = cache.get(key)
+
+    # If cache is empty read the database
+    if access_token is None:
+        try:
+            social_user = user.social_user if hasattr(user, 'social_user') \
+                          else UserSocialAuth.objects.get(
+                                  user=user.id, provider=TwitterBackend.name
+                               )
+        except UserSocialAuth.DoesNotExist:
+            return None
+
+        if social_user.extra_data:
+            access_token = social_user.extra_data.get('access_token')
+            expires = social_user.extra_data.get('expires')
+
+            cache.set(key, access_token, int(expires) if expires is not None
+                                                       else 0)
+    return access_token
+
+
+
+def setup_oauth():
+    """Authorize your app via identifier."""
+    # Request token
+    oauth = OAuth1(CONSUMER_KEY, client_secret=CONSUMER_SECRET)
+    r = requests.post(url=REQUEST_TOKEN_URL, auth=oauth)
+    credentials = parse_qs(r.content)
+
+    resource_owner_key = credentials.get('oauth_token')[0]
+    resource_owner_secret = credentials.get('oauth_token_secret')[0]
+
+    # Authorize
+    authorize_url = AUTHORIZE_URL + resource_owner_key
+    print 'Please go here and authorize: ' + authorize_url
+
+    verifier = raw_input('Please input the verifier: ')
+    oauth = OAuth1(CONSUMER_KEY,
+                   client_secret=CONSUMER_SECRET,
+                   resource_owner_key=resource_owner_key,
+                   resource_owner_secret=resource_owner_secret,
+                   verifier=verifier)
+
+    # Finally, Obtain the Access Token
+    r = requests.post(url=ACCESS_TOKEN_URL, auth=oauth)
+    credentials = parse_qs(r.content)
+    token = credentials.get('oauth_token')[0]
+    secret = credentials.get('oauth_token_secret')[0]
+
+    return token, secret
+
+
+def get_oauth():
+    print "GET AUUUUUUUUUUUUTH CALLED "
+    oauth = OAuth1(CONSUMER_KEY,
+                client_secret=CONSUMER_SECRET,
+                resource_owner_key=OAUTH_TOKEN,
+                resource_owner_secret=OAUTH_TOKEN_SECRET)
+    return oauth
+
+

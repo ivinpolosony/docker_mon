@@ -26,7 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/main'
 SOCIAL_AUTH_TWITTER_KEY ='NWF2Bfb6NVgf35Sd64mItG9DA'
 SOCIAL_AUTH_TWITTER_SECRET = 'Nn1ujnXd9rZkM5XzCHJeBysG22JKKaRlaanD253Kb7LJfHSGE2'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '71843179415-gc0ci5oqfuc1snr4uiga8n6gtjl1tole.apps.googleusercontent.com'
@@ -34,6 +34,16 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET ='FwNQpapo3fd3Be-WIYgvpvSE'
 SOCIAL_AUTH_GOOGLE_OAUTH2_USE_DEPRECATED_API = True
 SOCIAL_AUTH_GOOGLE_PLUS_USE_DEPRECATED_API = True
 # Application definition
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1537212706542879'
+SOCIAL_AUTH_FACEBOOK_SECRET = '2761bcdd5d563d1bf10b7e3621b8755e'
+
+OAUTH_TOKENS_HISTORY = False # to keep in DB expired access tokens
+OAUTH_TOKENS_TWITTER_CLIENT_ID = SOCIAL_AUTH_TWITTER_KEY # application ID
+OAUTH_TOKENS_TWITTER_CLIENT_SECRET = SOCIAL_AUTH_TWITTER_SECRET # application secret key
+OAUTH_TOKENS_TWITTER_USERNAME = '' # user login
+OAUTH_TOKENS_TWITTER_PASSWORD = '' # user password
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -44,6 +54,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'dockermon',
     'social.apps.django_app.default',
+    'twython',
+    'django_instagram'
+
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
    'django.contrib.auth.context_processors.auth',
@@ -56,6 +69,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
    'social.apps.django_app.context_processors.backends',
    'social.apps.django_app.context_processors.login_redirect',
 )
+
+
 
 AUTHENTICATION_BACKENDS = (
    'social.backends.facebook.FacebookOAuth2',

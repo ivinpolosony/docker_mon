@@ -1,0 +1,414 @@
+ var data ={
+ "kind": "calendar#events",
+ "etag": "\"1430222279719000\"",
+ "summary": "ivinpolosony@gmail.com",
+ "updated": "2015-04-28T11:57:59.719Z",
+ "timeZone": "Europe/Dublin",
+ "accessRole": "owner",
+ "defaultReminders": [
+  {
+   "method": "email",
+   "minutes": 10
+  },
+  {
+   "method": "popup",
+   "minutes": 10
+  }
+ ],
+ "nextPageToken": "EjYKKzBjaDZja2w0dTQydWcwdWhoOXBoOXJyaTJvXzIwMTUwNTI2VDE1MDAwMFoYgMDcv-PfxQI=",
+ "items": [
+  {
+   "kind": "calendar#event",
+   "etag": "\"2860444558748000\"",
+   "id": "_clr6arjkbthn6q3gctm7it37c9mm6g3dclin8tbg5phmur8",
+   "status": "confirmed",
+   "htmlLink": "https://www.google.com/calendar/event?eid=X2NscjZhcmprYnRobjZxM2djdG03aXQzN2M5bW02ZzNkY2xpbjh0Ymc1cGhtdXI4IGl2aW5wb2xvc29ueUBt",
+   "created": "2015-04-28T11:57:41.000Z",
+   "updated": "2015-04-28T11:57:59.374Z",
+   "summary": "Python Self-Study Support Group",
+   "description": "Dublin Data Science Beginners Meetup\nWednesday, April 29 at 6:30 PM\n\nHi. This meetup is for those who have started learning python on their own and is finding it difficult to learn fast and lean. If you feel that you ar...\n\nDetails: http://www.meetup.com/Dublin-Data-Science-Beginners-Meetup/events/221847050/",
+   "location": "Starbucks (Westmoreland Street, Dublin, Ireland)",
+   "creator": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "organizer": {
+    "email": "info@meetup.com",
+    "displayName": "Meetup Reminder"
+   },
+   "start": {
+    "dateTime": "2015-04-29T18:30:00+01:00"
+   },
+   "end": {
+    "dateTime": "2015-04-29T21:30:00+01:00"
+   },
+   "iCalUID": "event_cshpglytgbmc@meetup.com",
+   "sequence": 0,
+   "attendees": [
+    {
+     "email": "ivinpolosony@gmail.com",
+     "displayName": "ivin polo sony",
+     "self": true,
+     "responseStatus": "accepted"
+    }
+   ],
+   "guestsCanInviteOthers": false,
+   "privateCopy": true,
+   "reminders": {
+    "useDefault": true
+   }
+  },
+  {
+   "kind": "calendar#event",
+   "etag": "\"2859934517820000\"",
+   "id": "ddovt3vurbie5mhuojjaucovik",
+   "status": "confirmed",
+   "htmlLink": "https://www.google.com/calendar/event?eid=ZGRvdnQzdnVyYmllNW1odW9qamF1Y292aWsgaXZpbnBvbG9zb255QG0",
+   "created": "2015-04-23T13:52:51.000Z",
+   "updated": "2015-04-27T12:22:26.202Z",
+   "summary": "Careers at 4-5",
+   "creator": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "organizer": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "start": {
+    "dateTime": "2015-04-30T15:00:00+01:00",
+    "timeZone": "Europe/London"
+   },
+   "end": {
+    "dateTime": "2015-04-30T16:00:00+01:00",
+    "timeZone": "Europe/London"
+   },
+   "iCalUID": "ddovt3vurbie5mhuojjaucovik@google.com",
+   "sequence": 0,
+   "reminders": {
+    "useDefault": false,
+    "overrides": [
+     {
+      "method": "popup",
+      "minutes": 15
+     }
+    ]
+   }
+  },
+  {
+   "kind": "calendar#event",
+   "etag": "\"2848400349192000\"",
+   "id": "0ch6ckl4u42ug0uhh9ph9rri2o_20150505T150000Z",
+   "status": "confirmed",
+   "htmlLink": "https://www.google.com/calendar/event?eid=MGNoNmNrbDR1NDJ1ZzB1aGg5cGg5cnJpMm9fMjAxNTA1MDVUMTUwMDAwWiBpdmlucG9sb3NvbnlAbQ",
+   "created": "2015-02-17T19:09:34.000Z",
+   "updated": "2015-02-17T19:09:34.596Z",
+   "summary": "Branford Class at 6",
+   "creator": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "organizer": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "start": {
+    "dateTime": "2015-05-05T16:00:00+01:00",
+    "timeZone": "Europe/Dublin"
+   },
+   "end": {
+    "dateTime": "2015-05-05T17:00:00+01:00",
+    "timeZone": "Europe/Dublin"
+   },
+   "recurringEventId": "0ch6ckl4u42ug0uhh9ph9rri2o",
+   "originalStartTime": {
+    "dateTime": "2015-05-05T16:00:00+01:00",
+    "timeZone": "Europe/Dublin"
+   },
+   "iCalUID": "0ch6ckl4u42ug0uhh9ph9rri2o@google.com",
+   "sequence": 0,
+   "reminders": {
+    "useDefault": true
+   }
+  },
+  {
+   "kind": "calendar#event",
+   "etag": "\"2848400349192000\"",
+   "id": "0ch6ckl4u42ug0uhh9ph9rri2o_20150512T150000Z",
+   "status": "confirmed",
+   "htmlLink": "https://www.google.com/calendar/event?eid=MGNoNmNrbDR1NDJ1ZzB1aGg5cGg5cnJpMm9fMjAxNTA1MTJUMTUwMDAwWiBpdmlucG9sb3NvbnlAbQ",
+   "created": "2015-02-17T19:09:34.000Z",
+   "updated": "2015-02-17T19:09:34.596Z",
+   "summary": "Branford Class at 6",
+   "creator": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "organizer": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "start": {
+    "dateTime": "2015-05-12T16:00:00+01:00",
+    "timeZone": "Europe/Dublin"
+   },
+   "end": {
+    "dateTime": "2015-05-12T17:00:00+01:00",
+    "timeZone": "Europe/Dublin"
+   },
+   "recurringEventId": "0ch6ckl4u42ug0uhh9ph9rri2o",
+   "originalStartTime": {
+    "dateTime": "2015-05-12T16:00:00+01:00",
+    "timeZone": "Europe/Dublin"
+   },
+   "iCalUID": "0ch6ckl4u42ug0uhh9ph9rri2o@google.com",
+   "sequence": 0,
+   "reminders": {
+    "useDefault": true
+   }
+  },
+  {
+   "kind": "calendar#event",
+   "etag": "\"2856727756284000\"",
+   "id": "_6tlnaqrle5p6cpb4dhmj4phpehr68t39cph36dr569ojit9ncco6qsrg6dl70sr4d1nmqt3j6sq3go9ld9i6ic3gedonaoplclmmoobj61n30",
+   "status": "confirmed",
+   "htmlLink": "https://www.google.com/calendar/event?eid=XzZ0bG5hcXJsZTVwNmNwYjRkaG1qNHBocGVocjY4dDM5Y3BoMzZkcjU2OW9qaXQ5bmNjbzZxc3JnNmRsNzBzcjRkMW5tcXQzajZzcTNnbzlsZDlpNmljM2dlZG9uYW9wbGNsbW1vb2JqNjFuMzAgaXZpbnBvbG9zb255QG0",
+   "created": "2015-04-06T23:43:36.000Z",
+   "updated": "2015-04-06T23:44:38.142Z",
+   "summary": "The Secure Computing Forum",
+   "description": "To get a better Google Calendar experience for automatically created events like this one, use the official Google Calendar app. http://g.co/calendar\n\nThis event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DOvMxvT7WJW1jafNZbH2QsCLTPO3zxe0Ms\n",
+   "location": "Light House Cinema, Market SquareSmithfield Dublin 7, Dublin 7, Dublin, IE",
+   "creator": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "organizer": {
+    "email": "unknownorganizer@calendar.google.com"
+   },
+   "start": {
+    "dateTime": "2015-05-14T09:00:00+01:00"
+   },
+   "end": {
+    "dateTime": "2015-05-14T17:30:00+01:00"
+   },
+   "transparency": "transparent",
+   "visibility": "private",
+   "iCalUID": "7kukuqrfedlm2f9tvdtifb37e2q9u7c0msp3jpsdhomts748a5jdi0psquc5emlas0n0",
+   "sequence": 0,
+   "attendees": [
+    {
+     "email": "ivinpolosony@gmail.com",
+     "displayName": "ivin polo sony",
+     "self": true,
+     "responseStatus": "accepted"
+    }
+   ],
+   "guestsCanInviteOthers": false,
+   "privateCopy": true,
+   "reminders": {
+    "useDefault": true
+   },
+   "source": {
+    "url": "https://mail.google.com/mail?extsrc=cal&plid=ACUX6DOvMxvT7WJW1jafNZbH2QsCLTPO3zxe0Ms",
+    "title": ""
+   }
+  },
+  {
+   "kind": "calendar#event",
+   "etag": "\"2856727637300000\"",
+   "id": "hqig2a847vrobbvl3rj4k7t6ss",
+   "status": "confirmed",
+   "htmlLink": "https://www.google.com/calendar/event?eid=aHFpZzJhODQ3dnJvYmJ2bDNyajRrN3Q2c3MgaXZpbnBvbG9zb255QG0",
+   "created": "2015-04-06T23:43:38.000Z",
+   "updated": "2015-04-06T23:43:38.650Z",
+   "summary": "The Secure Computing Forum",
+   "description": "For details, link here: https://www.eventbrite.ie/e/the-secure-computing-forum-tickets-15890257187",
+   "location": "Light House Cinema - Market Square - Smithfield - Dublin 7 - Ireland",
+   "creator": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "organizer": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "start": {
+    "dateTime": "2015-05-14T09:00:00+01:00"
+   },
+   "end": {
+    "dateTime": "2015-05-14T16:30:00+01:00"
+   },
+   "iCalUID": "hqig2a847vrobbvl3rj4k7t6ss@google.com",
+   "sequence": 0,
+   "reminders": {
+    "useDefault": true
+   }
+  },
+  {
+   "kind": "calendar#event",
+   "etag": "\"2856725671706000\"",
+   "id": "_6tlnaqrle5p6cpb4dhmj4phpehn66rr96gqmep9jctnj8srde4s72s39c5q6ge9hd9kmmr9nclqmeqbkcpi78s1pctjn4t1lchqmkqb8e5hj0",
+   "status": "confirmed",
+   "htmlLink": "https://www.google.com/calendar/event?eid=XzZ0bG5hcXJsZTVwNmNwYjRkaG1qNHBocGVobjY2cnI5NmdxbWVwOWpjdG5qOHNyZGU0czcyczM5YzVxNmdlOWhkOWttbXI5bmNscW1lcWJrY3BpNzhzMXBjdGpuNHQxbGNocW1rcWI4ZTVoajAgaXZpbnBvbG9zb255QG0",
+   "created": "2015-04-06T23:26:17.000Z",
+   "updated": "2015-04-06T23:27:15.853Z",
+   "summary": "Jobs Expo Dublin 2015 - Saturday",
+   "description": "To get a better Google Calendar experience for automatically created events like this one, use the official Google Calendar app. http://g.co/calendar\n\nThis event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMEXBQ2mgFq6pBVo2ypaFsy1_tL77WrbCw\n",
+   "location": "Croke Park, Jones's RoadDublin 3 Dublin, Dublin, Dublin, IE, Dublin 3",
+   "creator": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "organizer": {
+    "email": "unknownorganizer@calendar.google.com"
+   },
+   "start": {
+    "dateTime": "2015-05-16T11:00:00+01:00"
+   },
+   "end": {
+    "dateTime": "2015-05-16T17:00:00+01:00"
+   },
+   "transparency": "transparent",
+   "visibility": "private",
+   "iCalUID": "7kukuqrfedlm2f9tncoi45ge3go4smq8qpiath91jikm7eugitfdtp9ggrt5dujihqc0",
+   "sequence": 0,
+   "attendees": [
+    {
+     "email": "ivinpolosony@gmail.com",
+     "displayName": "ivin polo sony",
+     "self": true,
+     "responseStatus": "accepted"
+    }
+   ],
+   "guestsCanInviteOthers": false,
+   "privateCopy": true,
+   "reminders": {
+    "useDefault": true
+   },
+   "source": {
+    "url": "https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMEXBQ2mgFq6pBVo2ypaFsy1_tL77WrbCw",
+    "title": ""
+   }
+  },
+  {
+   "kind": "calendar#event",
+   "etag": "\"2856725621082000\"",
+   "id": "hek37frdia1dmt3k49lvosn168",
+   "status": "confirmed",
+   "htmlLink": "https://www.google.com/calendar/event?eid=aGVrMzdmcmRpYTFkbXQzazQ5bHZvc24xNjggaXZpbnBvbG9zb255QG0",
+   "created": "2015-04-06T23:26:50.000Z",
+   "updated": "2015-04-06T23:26:50.541Z",
+   "summary": "Jobs Expo Dublin 2015 - Saturday",
+   "description": "For details, link here: https://www.eventbrite.ie/e/jobs-expo-dublin-2015-saturday-tickets-15289317761",
+   "location": "Croke Park - Jones's Road - Dublin 3 Dublin - Ireland",
+   "creator": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "organizer": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "start": {
+    "dateTime": "2015-05-16T11:00:00+01:00"
+   },
+   "end": {
+    "dateTime": "2015-05-16T16:00:00+01:00"
+   },
+   "iCalUID": "hek37frdia1dmt3k49lvosn168@google.com",
+   "sequence": 0,
+   "reminders": {
+    "useDefault": true
+   }
+  },
+  {
+   "kind": "calendar#event",
+   "etag": "\"2848400349192000\"",
+   "id": "0ch6ckl4u42ug0uhh9ph9rri2o_20150519T150000Z",
+   "status": "confirmed",
+   "htmlLink": "https://www.google.com/calendar/event?eid=MGNoNmNrbDR1NDJ1ZzB1aGg5cGg5cnJpMm9fMjAxNTA1MTlUMTUwMDAwWiBpdmlucG9sb3NvbnlAbQ",
+   "created": "2015-02-17T19:09:34.000Z",
+   "updated": "2015-02-17T19:09:34.596Z",
+   "summary": "Branford Class at 6",
+   "creator": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "organizer": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "start": {
+    "dateTime": "2015-05-19T16:00:00+01:00",
+    "timeZone": "Europe/Dublin"
+   },
+   "end": {
+    "dateTime": "2015-05-19T17:00:00+01:00",
+    "timeZone": "Europe/Dublin"
+   },
+   "recurringEventId": "0ch6ckl4u42ug0uhh9ph9rri2o",
+   "originalStartTime": {
+    "dateTime": "2015-05-19T16:00:00+01:00",
+    "timeZone": "Europe/Dublin"
+   },
+   "iCalUID": "0ch6ckl4u42ug0uhh9ph9rri2o@google.com",
+   "sequence": 0,
+   "reminders": {
+    "useDefault": true
+   }
+  },
+  {
+   "kind": "calendar#event",
+   "etag": "\"2848400349192000\"",
+   "id": "0ch6ckl4u42ug0uhh9ph9rri2o_20150526T150000Z",
+   "status": "confirmed",
+   "htmlLink": "https://www.google.com/calendar/event?eid=MGNoNmNrbDR1NDJ1ZzB1aGg5cGg5cnJpMm9fMjAxNTA1MjZUMTUwMDAwWiBpdmlucG9sb3NvbnlAbQ",
+   "created": "2015-02-17T19:09:34.000Z",
+   "updated": "2015-02-17T19:09:34.596Z",
+   "summary": "Branford Class at 6",
+   "creator": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "organizer": {
+    "email": "ivinpolosony@gmail.com",
+    "displayName": "ivin polo sony",
+    "self": true
+   },
+   "start": {
+    "dateTime": "2015-05-26T16:00:00+01:00",
+    "timeZone": "Europe/Dublin"
+   },
+   "end": {
+    "dateTime": "2015-05-26T17:00:00+01:00",
+    "timeZone": "Europe/Dublin"
+   },
+   "recurringEventId": "0ch6ckl4u42ug0uhh9ph9rri2o",
+   "originalStartTime": {
+    "dateTime": "2015-05-26T16:00:00+01:00",
+    "timeZone": "Europe/Dublin"
+   },
+   "iCalUID": "0ch6ckl4u42ug0uhh9ph9rri2o@google.com",
+   "sequence": 0,
+   "reminders": {
+    "useDefault": true
+   }
+  }
+ ]
+};

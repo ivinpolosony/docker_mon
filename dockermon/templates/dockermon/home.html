@@ -1,30 +1,396 @@
-{% extends 'dockermon/base.html' %}
+{% extends 'dockermon/base.html' %} {% block main %}
+  {% if user and not user.is_anonymous %}
+   <!-- HEADER -->
+    <div class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+            <!-- Logo -->
+            <div class="logo">
+              <h1>
+                <a href="/">Your Daily Dashboard</a>
+              </h1>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="input-group form">
+               
+<!-- Google Search Input  -->
+          <!--       <div id="searchcontrol"></div> -->
+               
+                  <input type="text" id="searchcontrol" class="form-control" placeholder="Search...">
+                  <span class="input-group-btn">
+                    <button id="uni_search" onclick="myFunction()" class="btn btn-primary" type="button">Search</button>
+                    <script type="text/javascript">
 
-{% block main %}
- <div>
- <h1>Third-party authentication demo</h1>
+                    function myFunction(){
+                      alert($("#searchcontrol").val());
+                      function_name($("#searchcontrol").val());
+                     }
+              </script>
+                  </span>
 
- <p>
-   <ul>
-   {% if user and not user.is_anonymous %}
-     <li>
-       <a>Hello {{ user.get_full_name|default:user.username }}!</a>
-     </li>
-     <li>
-       <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
-     </li>
-   {% else %}
-     <li>
-       <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
-     </li>
-     <li>
-       <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>
-     </li>
-     <li>
-       <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Login with Twitter</a>
-     </li>
-   {% endif %}
-   </ul>
- </p>
- </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="navbar navbar-inverse" role="banner">
+              <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                <ul class="nav navbar-nav">
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.get_full_name|default:user.username }}<b class="caret"></b></a>
+                    <ul class="dropdown-menu animated fadeInUp">
+                     
+                      <li>
+                      <li>
+                          <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
+                        </li>
+                       
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- HEADER ENDS -->
+
+    <!-- FIRST BAR  -->
+<div class="col-md-6">
+            <div class="content-box-large">
+              <div class="panel-heading">
+              <div class="panel-title" style="padding : 0px -2px 10px;"><img src="/static/images/Calander-Google-32.png">Google Callender </div>
+              
+              <div class="panel-options">
+                <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+              </div>
+            </div>
+              <div class="panel-body">
+                
+  <script type="text/javascript">
+      // Your Client ID can be retrieved from your project in the Google
+      // Developer Console, https://console.developers.google.com
+      var CLIENT_ID = '71843179415-gc0ci5oqfuc1snr4uiga8n6gtjl1tole.apps.googleusercontent.com';
+
+      // This quickstart only requires read-only scope, check
+      // https://developers.google.com/google-apps/calendar/auth if you want to
+      // request write scope.
+      var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
+
+      /**
+       * Check if current user has authorized this application.
+       */
+      function checkAuth() {
+        gapi.auth.authorize(
+          {
+            'client_id': CLIENT_ID,
+            'scope': SCOPES,
+            'immediate': true
+          }, handleAuthResult);
+      }
+
+      /**
+       * Handle response from authorization server.
+       *
+       * @param {Object} authResult Authorization result.
+       */
+      function handleAuthResult(authResult) {
+        var authorizeDiv = document.getElementById('authorize-div');
+        if (authResult && !authResult.error) {
+          // Hide auth UI, then load Calendar client library.
+          authorizeDiv.style.display = 'none';
+          loadCalendarApi();
+        } else {
+          // Show auth UI, allowing the user to initiate authorization by
+          // clicking authorize button.
+          authorizeDiv.style.display = 'inline';
+        }
+      }
+
+      /**
+       * Initiate auth flow in response to user clicking authorize button.
+       *
+       * @param {Event} event Button click event.
+       */
+      function handleAuthClick(event) {
+        gapi.auth.authorize(
+          {client_id: CLIENT_ID, scope: SCOPES, immediate: false},
+          handleAuthResult);
+        return false;
+      }
+
+      /**
+       * Load Google Calendar client library. List upcoming events
+       * once client library is loaded.
+       */
+      function loadCalendarApi() {
+        gapi.client.load('calendar', 'v3', listUpcomingEvents);
+      }
+
+      /**
+       * Print the summary and start datetime/date of the next ten events in
+       * the authorized user's calendar. If no events are found an
+       * appropriate message is printed.
+       */
+      function listUpcomingEvents() {
+        var request = gapi.client.calendar.events.list({
+          'calendarId': 'primary',
+          'timeMin': (new Date()).toISOString(),
+          'showDeleted': false,
+          'singleEvents': true,
+          'maxResults': 10,
+          'orderBy': 'startTime'
+        });
+
+        request.execute(function(resp) {
+          console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++=");
+          
+          //console.log(resp);
+          date_compare(resp);
+
+          var events = resp.items;
+          appendPre('Upcoming events:');
+
+          if (events.length > 0) {
+            for (i = 0; i < events.length; i++) {
+              var event = events[i];
+              var when = event.start.dateTime;
+              if (!when) {
+                when = event.start.date;
+              }
+              appendPre(event.summary + ' (' + when + ')' + event.location)
+            }
+          } else {
+            appendPre('No upcoming events found.');
+          }
+
+        });
+      }
+
+      /**
+       * Append a pre element to the body containing the given message
+       * as its text node.
+       *
+       * @param {string} message Text to be placed in pre element.
+       */
+   function appendPre(message) {
+                          var pre = document.getElementById('output');
+                       //   $(pre).append("<img src='static/images/Calander-Google-32.png' />&nbsp<li>");
+                      //    $(pre).append("&nbsp<li>");
+                         
+                          var textContent = document.createTextNode(message + '\n');
+                          
+                       /*   var elem = document.createElement("img");
+                          elem.setAttribute("src", "static/images/Calander-Google-32.png");
+                          pre.appendChild(elem);*/
+
+                          var h = document.createElement("hr");     
+                        //   $(h).prepend("<img src='static/images/Calander-Google-32.png' />&nbsp");
+                          pre.appendChild(textContent);
+                          pre.appendChild(h);
+                          
+                   
+                         // pre.innerHTML = message + '\n';
+                        }
+
+      function date_compare(time) {
+        //console.log(time.items);
+        var events= {};
+        events = time.items;
+        //console.log(events);
+        for(var i = 0; i < events.length ; i++){
+          console.log(events[i]);
+          var summary = events[i].summary;
+          var when = events[i].start.dateTime;
+          //console.log(when);
+          var startD = when.split("T");
+          startD = when.split("+");
+          var evntTime = startD;
+
+          console.log(startD[1]);
+
+        }
+
+      }
+       </script>
+           <script src="https://apis.google.com/js/client.js?onload=checkAuth">
+    </script>
+                <div id="authorize-div" style="display: none">
+                          <span>Authorize access to calendar</span>
+                          <!--Button for the user to click to initiate auth sequence -->
+                          <button id="authorize-button" onclick="handleAuthClick(event)">Authorize</button>
+                        </div>
+                        <div id="output">
+                </div>
+                
+
+
+
+
+                <br><br>
+               
+              <br><br>
+              </div>
+            </div>
+</div>
+    <!-- FIRST ENDS  -->
+
+
+    <!-- sec BAR  -->
+<div class="col-md-6">
+            <div class="content-box-large">
+              <div class="panel-heading">
+              <div class="panel-title">Instagram Feed </div>
+              
+              <div class="panel-options">
+                <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+              </div>
+            </div>
+              <div class="panel-body">
+               
+                <div id="insta"></div>
+               
+              <br><br>
+              </div>
+            </div>
+</div>
+    <!-- sec ENDS  -->
+
+
+    <!-- 3 BAR  -->
+<div class="col-md-6">
+            <div class="content-box-large">
+              <div class="panel-heading">
+              <div class="panel-title">Tweets </div>
+              
+              <div class="panel-options">
+                <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+              </div>
+            </div>
+              <div class="panel-body">
+
+                  <div id="latest_tweet">
+                    
+
+                  </div>    
+
+
+
+                <br><br>
+               
+              <br><br>
+              </div>
+            </div>
+</div>
+    <!-- 3 ENDS  -->
+
+    <!-- 4 BAR  -->
+<div class="col-md-6">
+            <div class="content-box-large">
+              <div class="panel-heading">
+              <div class="panel-title">Google Search </div>
+              
+              <div class="panel-options">
+                <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+              </div>
+            </div>
+              <div class="panel-body">
+              <div id="tes"></div>
+               
+             <div id="searchcontrol"></div>
+               
+              <br><br>
+              </div>
+            </div>
+</div>
+    <!-- 4 ENDS  -->
+
+        <!-- 4 BAR  -->
+<div class="col-md-6">
+            <div class="content-box-large">
+              <div class="panel-heading">
+              <div class="panel-title">Redit Feeds  </div>
+              
+              <div class="panel-options">
+                <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+              </div>
+            </div>
+              <div class="panel-body">
+              <div id="tes"></div>
+               
+             <div id="redit">
+               
+               No Feeds 
+             </div>
+               
+              <br><br>
+              </div>
+            </div>
+</div>
+    <!-- 4 ENDS  -->
+
+
+
+
+
+
+        
+
+
+
+
+    {% else %}
+
+
+
+
+
+
+<div class="col-md-4 col-md-offset-4">
+        <div class="login-wrapper">
+              <div class="box">
+                  <div class="content-wrap">
+                      <h6>Sign In</h6>
+                      <div class="social">
+
+              
+                  <a  href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="btn btn-block btn-social btn-lg btn-twitter" ><i class="fa fa-twitter"></i>Sign in with Twitter</a>
+
+                  <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="btn btn-block btn-social btn-lg btn-facebook" ><i class="fa fa-facebook"></i>Sign in with Facebook</a>
+                  <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="btn btn-block btn-social btn-lg btn-google" ><i class="fa fa-google"></i>Sign in with Google</a>
+                                  
+                                 
+                              </a>
+                              <div class="division">
+                                  <hr class="left">
+                               
+                      <div class="action">
+         
+                      </div>                
+                  </div>
+              </div>
+
+     
+          </div>
+      </div>
+    
+
+
+
+
+
+
+      {% endif %}
 {% endblock %}

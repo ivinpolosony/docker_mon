@@ -1,0 +1,9 @@
+{% extends 'dockermon/base.html' %}
+{% block main %}
+
+{% for tweet in tweets %}
+    <img src="{{ tweet.user.profile_image_url_https }}"/>
+    {{ tweet.text }}
+    <hr>
+{% endfor %}
+{% endblock %}
